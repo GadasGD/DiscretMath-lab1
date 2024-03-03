@@ -98,14 +98,14 @@ void merge(char arrA[], int sizeA, char arrB[], int sizeB, char result[], int *s
     *sizeR = k;
 }
 
-void A_in_B(char check_setA[], int sizeA, char check_setB[], int sizeB) // проверка наличия элементов A в множестве B
+void A_in_B(char check_arrA[], int sizeA, char check_arrB[], int sizeB) // проверка наличия элементов A в множестве B
 {
     if (sizeA <= sizeB)
     {
         int i = 0, j = 0;
         while (i < sizeA && j < sizeB)
         {
-            if (check_setA[i] == check_setB[j])
+            if (check_arrA[i] == check_arrB[j])
             {
                 i++;
             }
@@ -113,23 +113,23 @@ void A_in_B(char check_setA[], int sizeA, char check_setB[], int sizeB) // пр�
         }
         if (i == sizeA)
         {
-            printf("Множество А: %s,\n", check_setA);
-            printf("Множество B: %s,\n", check_setB);
+            printf("Множество А: %s,\n", check_arrA);
+            printf("Множество B: %s,\n", check_arrB);
             printf("Результат проверки: A входит в B.\n");
             printf("\n");
         }
         else
         {
-            printf("Множество А: %s,\n", check_setA);
-            printf("Множество B: %s,\n", check_setB);
+            printf("Множество А: %s,\n", check_arrA);
+            printf("Множество B: %s,\n", check_arrB);
             printf("Результат проверки: A не входит в B.\n");
             printf("\n");
         }
     }
     else
     {
-        printf("Множество А: %s,\n", check_setA);
-        printf("Множество B: %s,\n", check_setB);
+        printf("Множество А: %s,\n", check_arrA);
+        printf("Множество B: %s,\n", check_arrB);
         printf("Результат проверки: A не входит в B.\n");
         printf("\n");
     }
@@ -165,11 +165,11 @@ void print_A_and_B(char arrA[], int sizeA, char arrB[], int sizeB) // вывод
     printf("\n");
 }
 
-void combining_A_and_B(char check_setA[], int sizeA, char check_setB[], int sizeB, char result[], int *sizeR) // объединение множеств А и множества B
+void combining_A_and_B(char check_arrA[], int sizeA, char check_arrB[], int sizeB, char result[], int *sizeR) // объединение множеств А и множества B
 {
-    merge(check_setA, sizeA, check_setB, sizeB, result, sizeR);
-    printf("Множество А: %s,\n", check_setA);
-    printf("Множество B: %s,\n", check_setB);
+    merge(check_arrA, sizeA, check_arrB, sizeB, result, sizeR);
+    printf("Множество А: %s,\n", check_arrA);
+    printf("Множество B: %s,\n", check_arrB);
     printf("Результат объединения A и B: ");
     for (int i = 0; i < *sizeR; i++)
     {
@@ -179,7 +179,7 @@ void combining_A_and_B(char check_setA[], int sizeA, char check_setB[], int size
     printf("\n");
 }
 
-void A_and_B_difference(char check_setA[], int sizeA, char check_setB[], int sizeB, char result[], int sizeR) // Разность множества А и множества B
+void A_and_B_difference(char check_arrA[], int sizeA, char check_arrB[], int sizeB, char result[], int sizeR) // Разность множества А и множества B
 {
     sizeR = 0;
     for (int i = 0; i < sizeA; i++)
@@ -187,7 +187,7 @@ void A_and_B_difference(char check_setA[], int sizeA, char check_setB[], int siz
         int found = 0;
         for (int j = 0; j < sizeB; j++)
         {
-            if (check_setA[i] == check_setB[j])
+            if (check_arrA[i] == check_arrB[j])
             {
                 found = 1;
                 break;
@@ -195,11 +195,11 @@ void A_and_B_difference(char check_setA[], int sizeA, char check_setB[], int siz
         }
         if (!found)
         {
-            result[sizeR++] = check_setA[i];
+            result[sizeR++] = check_arrA[i];
         }
     }
-    printf("Множество А: %s,\n", check_setA);
-    printf("Множество B: %s,\n", check_setB);
+    printf("Множество А: %s,\n", check_arrA);
+    printf("Множество B: %s,\n", check_arrB);
     printf("Результат разности A и B: ");
     for (int i = 0; i < sizeR; i++)
     {
@@ -209,19 +209,19 @@ void A_and_B_difference(char check_setA[], int sizeA, char check_setB[], int siz
     printf("\n");
 }
 
-void intersection_A_and_B(char check_setA[], int sizeA, char check_setB[], int sizeB, char result[], int sizeR) // пересечение множеств А и множества B
+void intersection_A_and_B(char check_arrA[], int sizeA, char check_arrB[], int sizeB, char result[], int sizeR) // пересечение множеств А и множества B
 {
     int i = 0, j = 0;
     sizeR = 0;
     while (i < sizeA && j < sizeB)
     {
-        if (check_setA[i] == check_setB[j])
+        if (check_arrA[i] == check_arrB[j])
         {
-            result[sizeR++] = check_setA[i];
+            result[sizeR++] = check_arrA[i];
             i++;
             j++;
         }
-        else if (check_setA[i] < check_setB[j])
+        else if (check_arrA[i] < check_arrB[j])
         {
             i++;
         }
@@ -230,8 +230,8 @@ void intersection_A_and_B(char check_setA[], int sizeA, char check_setB[], int s
             j++;
         }
     }
-    printf("Множество А: %s,\n", check_setA);
-    printf("Множество B: %s,\n", check_setB);
+    printf("Множество А: %s,\n", check_arrA);
+    printf("Множество B: %s,\n", check_arrB);
     printf("Результат пересечения A и B: ");
     for (int i = 0; i < sizeR; i++)
     {
@@ -242,15 +242,15 @@ void intersection_A_and_B(char check_setA[], int sizeA, char check_setB[], int s
 }
 int main()
 {
-    char arrA[100];
+    char arrA[100] = {0};
     int sizeA = 0;
-    char check_setA[100];
+    char check_arrA[100];
 
-    char arrB[100];
+    char arrB[100] = {0};
     int sizeB = 0;
-    char check_setB[100];
+    char check_arrB[100];
 
-    char Results[100];
+    char Results[100] = {0};
     int sizeR = 0;
 
     int choice;
@@ -302,7 +302,7 @@ int main()
 
                 if (check == 1)
                 {
-                    remove_duplicate(arrA, sizeA, check_setA);
+                    remove_duplicate(arrA, sizeA, check_arrA);
                     break;
                 }
             }
@@ -345,7 +345,7 @@ int main()
 
                 if (check == 1)
                 {
-                    remove_duplicate(arrB, sizeB, check_setB);
+                    remove_duplicate(arrB, sizeB, check_arrB);
                     break;
                 }
             }
@@ -354,16 +354,16 @@ int main()
             print_A_and_B(arrA, sizeA, arrB, sizeB);
             break;
         case 4:
-            A_in_B(check_setA, sizeA, check_setB, sizeB);
+            A_in_B(check_arrA, sizeA, check_arrB, sizeB);
             break;
         case 5:
-            combining_A_and_B(check_setA, sizeA, check_setB, sizeB, Results, &sizeR);
+            combining_A_and_B(check_arrA, sizeA, check_arrB, sizeB, Results, &sizeR);
             break;
         case 6:
-            intersection_A_and_B(check_setA, sizeA, check_setB, sizeB, Results, sizeR);
+            intersection_A_and_B(check_arrA, sizeA, check_arrB, sizeB, Results, sizeR);
             break;
         case 7:
-            A_and_B_difference(check_setA, sizeA, check_setB, sizeB, Results, sizeR);
+            A_and_B_difference(check_arrA, sizeA, check_arrB, sizeB, Results, sizeR);
             break;
         case 8:
             exit(0);
